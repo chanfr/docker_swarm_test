@@ -1,0 +1,18 @@
+docker build -t my_image .
+
+
+
+docker swarm init --advertise-addr 192.168.1.138
+
+
+docker service create --replicas 1 --name myCustomService -p 80:5005 my_image
+
+
+docker service scale myCustomService=5
+
+
+
+
+
+docker service update --image my_image myCustomService
+docker service update --image my_image2 myCustomService
